@@ -4,22 +4,26 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>SKJ Recipe Library</title>
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
      <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<main id="background">
-  <div id="title"><h1>Anytime, Anywhere</h1></div>
-  <div id="drink-recipe">
+<main class="container" id="background">
+  <div class="row">
+    <div class="col s12" id="title">
+      <h1>Anytime, Anywhere</h1>
+    </div>
+    <div class="col s8" id="drink-recipe">
       <h3>Get your drink recipe now</h3>
       <input id="drink-input">
       <button id="drink-button">Search</button>
-  </div>
-  <div id="food-recipe">
-    <h3>Get your food recipe now</h3>
-    <input id="food-input">
-    <button id="food-button">Search</button>
+    </div>
+    <div class="col s8 offset-s4" id="food-recipe">
+      <h3>Get your food recipe now</h3>
+      <input id="food-input">
+      <button id="food-button">Search</button>
+    </div>
   </div>
 </main>
 <script src="script.js"></script>
