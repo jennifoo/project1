@@ -3,7 +3,7 @@ html {
 }
 
 h1,h2,h3,h4,h5 {
-  margin-top:0;
+  /* margin-top:0; */
   font-weight: 400;
 }
 h1 {
@@ -16,16 +16,9 @@ h3 {
   font-size: 22pt;
 }
 #drink-recipe, #food-recipe {
-  background-color: #fff;
   opacity: .9;
-  padding: 25px;
-  margin-bottom: 15px;
-}
-button {
-  display: block;
-  margin-top: 15px;
-}
-main {
+  /* padding: 25px;
+  margin-bottom: 15px; */
   height: 100vh;
 }
 #background {
