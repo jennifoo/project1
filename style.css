@@ -4,8 +4,6 @@ html {
   font-family: 'Barlow Condensed', sans-serif;
 }
 
-
-
 h1,h2,h3,h4,h5 {
   margin-top:0;
   font-weight: 400;
@@ -17,9 +15,18 @@ h1 {
   margin-top: 50px;
 }
 
+#results-page h1 {
+  font-family: 'Staatliches', cursive;
+  font-weight: 400; font-size: 40pt;
+  color: #000;
+  margin-top: 0;
+}
+
 h3 {
   font-size: 22pt;
 }
+
+body { margin: 0; }
 
 /* HOMEPAGE ---------------------------------------- */
 
@@ -41,11 +48,29 @@ h3 {
 
 /* RESULTS PAGE ---------------------------------------- */
 
-#background-results {
+#results-background {
   background-image: url(images/result-page.jpg);
+  background-attachment: fixed;
+  background-color: #fff;
+  background-position: 50% 0;
   background-repeat: no-repeat;
-  background-position: left top;
   background-size: cover;
-  height: 100vh;
+  /* height: 100vh; */
+  /* position: sticky; */
+}
 
+#results-container {
+  min-height: 1000px;
+  background-color: #fff;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: .9;
+  padding: 25px;
+  /* overflow: hidden; */
+}
+
+
+#result-section {
+  min-height: 500px;
 }
