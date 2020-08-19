@@ -2,41 +2,38 @@
 // PLEASE FEEL FREE TO MAKE ANY CHANGES WITH COMMENTS AND RE-COMMIT TO THE REPO
 
 //list of variables
- 
-var $drinkRecipe = document.querySelector("#drink-input");
-var $foodRecipe = document.querySelector("#food-input");
+var queryURL;
+var serchTerm;
+var $drinkRecipe = document.getElementById("#drink-input");
+var $foodRecipe = document.getElementById("food-input");
+let $drinkButton = document.getElementById("drink-button");
 
 //location href is pending
-document.getElementById("#drink-button").onclick = function () {
-    
-// need to link drink recipe button
-let searchTerm = $drinkRecipe.value()
-let queryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+searchTerm;
-$.ajax({
-     url: queryURL,
-     method: "GET"
-     }).then(function(response) 
-             {
-                 console.log(response);
-                 });
-    //location.href = "index2.html"; 
+$drinkButton.onclick = function () {
+    searchTerm = $drinkRecipe.value()
+    queryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+searchTerm;
+    ajaxQuery();
 };
 
 
-//location href is pending
-document.getElementById("#food-button").onclick = function () {
 
+
+//location href is pending
+document.getElementById("food-button").onclick = function () {
+    searchTerm = $foodRecipe.value()
+    queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s="+searchTerm;
+};
+
+function ajaxQuery() {
 // need to link food recipe button
-let searchTerm = $foodRecipe.value()
-let queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s="+searchTerm;
 $.ajax({
      url: queryURL,
      method: "GET"
-     }).then(function(response) 
+     }).then(function(response)
              {
                  console.log(response);
              });
-    location.href = "index2.html"; 
-};
+    // location.href = "results.html";
+}
 
 
