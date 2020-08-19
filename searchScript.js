@@ -1,5 +1,5 @@
 let $backButton = $("#search-again");
-
+let $results = document.getElementById("result-section");
 
 
 //Ajax query; uses queryURL variable
