@@ -12,14 +12,29 @@ $("document").ready(function()
           }).then(function(response)
                   {
                       let $results = document.getElementById("result-section");
-                    //   $results.textContent = localStorage.getItem("results");
                       console.log(response);
-                  });
-         // location.href = "results.html";
-     }
-);
-
-
+                      let foodOrDrink = localStorage.getItem("foodOrDrink");
+                      switch (foodOrDrink)
+                      {
+                           case "food":
+                                results("food");
+                                break;
+                                case "drink":
+                                     results("drink");
+                                     break;
+                                     default:
+                                          console.log(localStorage.getItem("foodOrDrink"));
+                                        }
+                                   });
+                                   // location.href = "results.html";
+                              }
+                         );
+                              
+function results(foodOrDrink)
+{
+     console.log(foodOrDrink);
+     $results.textContent = localStorage.getItem("results");
+}
 
 
 
