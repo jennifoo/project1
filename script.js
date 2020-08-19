@@ -20,8 +20,8 @@ $drinkButton.onclick = function () {
 
 //location href is pending
 document.getElementById("food-button").onclick = function () {
-    searchTerm = $foodRecipe.value()
     queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s="+searchTerm;
+    searchTerm = $foodRecipe.value()
 };
 
 function ajaxQuery() {
