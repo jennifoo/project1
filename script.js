@@ -19,7 +19,7 @@ $.ajax({
              {
                  console.log(response);
                  });
-    //location.href = "index2.html"; 
+    //location.href = "results.html"; 
 };
 
 
@@ -36,7 +36,7 @@ $.ajax({
              {
                  console.log(response);
              });
-    location.href = "index2.html"; 
+    location.href = "results.html"; 
 };
 
 
