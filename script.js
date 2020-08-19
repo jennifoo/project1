@@ -3,14 +3,14 @@
 
 //list of variables
  
-var drinkRecipe = document.querySelector("#drink-input");
-var foodRecipe = document.querySelector("#food-input");
+var $drinkRecipe = document.querySelector("#drink-input");
+var $foodRecipe = document.querySelector("#food-input");
 
 //location href is pending
 document.getElementById("#drink-button").onclick = function () {
     
 // need to link drink recipe button
-let searchTerm = "#drink-input"
+let searchTerm = $drinkRecipe.value()
 let queryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+searchTerm;
 $.ajax({
      url: queryURL,
@@ -27,7 +27,7 @@ $.ajax({
 document.getElementById("#food-button").onclick = function () {
 
 // need to link food recipe button
-let searchTerm = "#food-input";
+let searchTerm = $foodRecipe.value()
 let queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s="+searchTerm;
 $.ajax({
      url: queryURL,
