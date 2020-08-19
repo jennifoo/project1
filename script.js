@@ -6,20 +6,23 @@ var $foodRecipe = document.getElementById("food-input");
 let $drinkButton = document.getElementById("drink-button");
 let $foodButton = document.getElementById("food-button");
 
-
+var $form = $("form");
 //Drink button onclick function
-$drinkButton.onclick = function () {
-    searchTerm = $drinkRecipe.value;
-    localStorage.setItem("queryURL", "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+searchTerm);
-    window.location.replace("./results.html");
-};
-
-
+// $drinkButton.addEventListener("click", ajaxQuery);
 
 
 //Food button onclick function
-document.getElementById("food-button").onclick = function () {
-    searchTerm = $foodRecipe.value;
-    localStorage.setItem("queryURL", "https://www.themealdb.com/api/json/v1/1/search.php?s="+searchTerm);
+// $foodButton.addEventListener("click", ajaxQuery);
+
+function ajaxQuery(event)
+{
+    event.preventDefault();
+    searchTerm = $(this).find(`input[name="search-input"]`).val();
+    var queryURL = $(this).attr("data-url");
+    localStorage.setItem("queryURL", queryURL+searchTerm);
     window.location.replace("./results.html");
-};
+}
+
+
+
+$form.on("submit", ajaxQuery);
