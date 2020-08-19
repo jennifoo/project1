@@ -1,20 +1,29 @@
+let $backButton = $("#search-again");
+
+
+
 //Ajax query; uses queryURL variable
-$("document").ready(function() {
+$("document").ready(function()
+{
      // need to link food recipe button
      $.ajax({
           url: localStorage.getItem("queryURL"),
           method: "GET"
           }).then(function(response)
                   {
-                      localStorage.setItem("results", JSON.stringify(response));
                       let $results = document.getElementById("result-section");
                     //   $results.textContent = localStorage.getItem("results");
-                      console.log(response[0]);
+                      console.log(response);
                   });
          // location.href = "results.html";
-     });
+     }
+);
 
-document.getElementById("search-again").onclick(function()
+
+
+
+
+$backButton.on("click", function()
 {
      window.location.replace("./index.html");
-}
+});

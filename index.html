@@ -24,16 +24,20 @@
       <div class="row">
                 <div class="col m8" id="drink-recipe">
                   <h3>Drink Recipes</h3>
-                  <input id="drink-input">
-                  <button class="btn" id="drink-button">Get Recipe</button>
+                  <form data-url="https://www.thecocktaildb.com/api/json/v1/1/search.php?s=">
+                    <input name="search-input" id="drink-input">
+                    <button class="btn" type="submit" id="drink-button">Get Recipe</button>
+                  </form>
                 </div>
       </div>
 
       <div class="row">
                 <div class="col m8 offset-m4" id="food-recipe">
                   <h3>Food Recipes</h3>
-                  <input id="food-input">
-                  <button class="btn" id="food-button">Get Recipe</button>
+                  <form data-url="https://www.themealdb.com/api/json/v1/1/search.php?s=">
+                    <input name="search-input" id="food-input">
+                    <button class="btn" type="submit" id="food-button">Get Recipe</button>
+                  </form>
                 </div>
       </div>
 
