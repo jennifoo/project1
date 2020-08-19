@@ -33,7 +33,7 @@ body { margin: 0; }
 #drink-recipe, #food-recipe {
   background-color: #fff;
   opacity: .9;
-  /* padding: 25px;
+  padding: 25px;
   margin-bottom: 15px; */
   /* height: 100vh; */
 }
