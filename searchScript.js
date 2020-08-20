@@ -34,7 +34,7 @@ $("document").ready(function()
                    );
                                    // location.href = "results.html";
 });
-                              
+
 function displayResults(foodOrDrink)
 {
      for(let i = 0; i < $array.length; i++)
@@ -78,20 +78,47 @@ function displayResults(foodOrDrink)
           let $result = $(`<div class="searchQuery"></div>`);
           if (foodOrDrink == "drink")
           {
-               $thumbNail = $(`<img width="25%" src="${searchQuery.strDrinkThumb}" class="thumb-nail"><img>`);
+               $thumbNail = $(`<img width="100%" src="${searchQuery.strDrinkThumb}" class="thumb-nail"><img>`);
                $recipeName.text(searchQuery.strDrink);
           }
           else
           {
-               $thumbNail = $(`<img width="25%" src="${searchQuery.strMealThumb}" class="thumb-nail"><img>`);
+               $thumbNail = $(`<img width="100%" src="${searchQuery.strMealThumb}" class="thumb-nail"><img>`);
                $recipeName.text(searchQuery.strMeal);
           }
           $instructions.text(searchQuery.strInstructions);
-          $result.append($recipeName);
-          $result.append($thumbNail);
-          $result.append($ingredients);
-          $result.append($instructions);
-          $("#result-section").append($result);
+
+          // Result Item Div, Append all items to this one. And this one appends to ".result-section"
+          let $resultItemDiv = $(`<div class="result-item"></div>`);
+          // *****THIS IS A CONTAINER FOR APPENDING TO*****
+
+                  // Recipe name, Append the h2 recipe name to this div.
+                  let $resultItemRowH2Row = $(`<div class="row"></div>`);
+                          let $resultItemRowH2Col = $(`<div class="col addResultTitle"></div>`);
+                          $($resultItemRowH2Row).append($resultItemRowH2Col);
+                          $($resultItemRowH2Col).append($recipeName);
+
+                  // Row that contains the image and description. Append the image COLUMN and descript COLUMN to this Row div.
+                  let $resultItemRowBody = $(`<div class="row"></div>`);
+                  // ******THIS IS A CONTAINER FOR APPENDING TO*****
+
+                            // Column that you need to append the image to.
+                            let $resultItemColImage = $(`<div class="col m4">`);
+                            $resultItemColImage.append($thumbNail);
+
+                            // Column that you need to append the description to
+                            let $resultItemColDescription = $(`<div class="col m8">`);
+                            $resultItemColDescription.append($instructions);
+
+                            //$result.append($ingredients);
+
+          $resultItemRowBody.append($resultItemColImage);
+          $resultItemRowBody.append($resultItemColDescription);
+
+          $resultItemDiv.append($resultItemRowH2Row);
+          $resultItemDiv.append($resultItemRowBody);
+
+          $("#result-section").append($resultItemDiv);
      }
 }
 

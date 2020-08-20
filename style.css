@@ -127,11 +127,19 @@ button {
   min-height: 100vh;
 }
 
+#result-section p {
+margin: 0;
+}
+
+.addResultTitle {
+  margin-top: 25px;
+}
+
 #results-backbutton {
   margin: 0 auto 0 auto;
   text-align: center;
   border-bottom: solid 2px #000;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
 }
 
 #results-backbutton a {
