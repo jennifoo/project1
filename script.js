@@ -21,3 +21,36 @@ function ajaxQuery(event)
 
 
 $form.on("submit", ajaxQuery);
+
+
+
+/* --------------- ANIMATE BACKGROUND FUNCTIONS --------------- */
+/* function animatebg1(){
+  setTimeout(function() {
+  $("#background1:before").css("background-image", "url(images/food-man.jpg)");
+  animatebg2()
+}, 2 * 1000);
+}
+function animatebg2(){
+  setTimeout(function() {
+  $("#background1:before").css("background-image", "url(images/drink-woman.jpg)");
+}, 3 * 1000);
+}
+animatebg1(); */
+/* --------------- END BACKGROUND FUNCTIONS --------------- */
+
+
+
+
+function animatebg1(){
+  setTimeout(function() {
+  $('#background1').toggleClass('change1');
+  animatebg2()
+}, 1.25 * 1000);
+}
+function animatebg2(){
+  setTimeout(function() {
+  $('#background1').toggleClass('change2');
+}, 1 * 1000);
+}
+animatebg1();
