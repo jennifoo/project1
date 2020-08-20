@@ -1,6 +1,7 @@
 let $backButton = $("#search-again");
 let $results = document.getElementById("result-section");
 let $array = new Array();
+let arrayType;
 
 //Ajax query; uses queryURL variable
 $("document").ready(function()
@@ -9,34 +10,38 @@ $("document").ready(function()
      $.ajax({
           url: localStorage.getItem("queryURL"),
           method: "GET"
-          }).then(function(response)
-                  {
+            }).then(function(response)
+                    {
+                       arrayType = response[0];
+                       console.log(response);
+                       console.log(JSON.stringify(arrayType));
                        let $results = document.getElementById("result-section");
                        let foodOrDrink = localStorage.getItem("foodOrDrink");
                        switch (foodOrDrink)
                        {
                             case "food":
                                 $array = response.meals;
-                                resultsFood();
+                                displayResults("food");
                                 break;
                            case "drink":
-                              $array = response.drinks;
-                                resultsDrink();
+                                $array = response.drinks;
+                                displayResults("drink");
                                 break;
                            default:
                                 console.log(localStorage.getItem("foodOrDrink"));
-                      }
-                                   });
+                       }
+                    }
+                   );
                                    // location.href = "results.html";
-                              }
-                         );
+});
                               
-function resultsDrink()
+function displayResults(foodOrDrink)
 {
      for(let i = 0; i < $array.length; i++)
      {
           let searchQuery = $array[i];
-          let $drinkName = $(`<h2 class="drinkName"></h2>`);
+          // console.log($array);
+          let $recipeName = $(`<h2 class="recipeName"></h2>`);
           let $ingredients = $(`<ul class="ingredients"></ul>`);
           let keys = Object.keys(searchQuery);
           let steps = new Array();
@@ -47,7 +52,6 @@ function resultsDrink()
                if(keys[i].startsWith("strIngredient"))
                {
                     let index = keys.indexOf(`strIngredient${ingNum}`)-20;
-                    console.log(index);
                     steps.push({[searchQuery[`strIngredient${index}`]]:searchQuery[`strMeasure${index}`]});
                     ingNum++;
                }
@@ -58,22 +62,37 @@ function resultsDrink()
                if(!steps[i].hasOwnProperty("null"))
                {
                     let $li = $(`<li></li>`);
-                    $li.text(JSON.stringify(steps[i]));
+                    let str = JSON.stringify(steps[i])
+                    str = str.replace("{", "");
+                    str = str.replace("}", "");
+                    for(let i = 0; i < 4; i++)
+                    {
+                         str = str.replace(`"`, "");
+                    }
+                    $li.text(str);
                     $ingredients.append($li);
                }
           }
-          
+          let $thumbNail;
+          let $instructions = $(`<p class="instructions"></p>`);
           let $result = $(`<div class="searchQuery"></div>`);
-          $drinkName.text(searchQuery.strDrink);
-          $result.append($drinkName);
+          if (foodOrDrink == "drink")
+          {
+               $thumbNail = $(`<img width="25%" src="${searchQuery.strDrinkThumb}" class="thumb-nail"><img>`);
+               $recipeName.text(searchQuery.strDrink);
+          }
+          else
+          {
+               $thumbNail = $(`<img width="25%" src="${searchQuery.strMealThumb}" class="thumb-nail"><img>`);
+               $recipeName.text(searchQuery.strMeal);
+          }
+          $instructions.text(searchQuery.strInstructions);
+          $result.append($recipeName);
+          $result.append($thumbNail);
           $result.append($ingredients);
+          $result.append($instructions);
           $("#result-section").append($result);
      }
-}
-
-function resultsFood()
-{
-
 }
 
 
