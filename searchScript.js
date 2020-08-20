@@ -1,6 +1,6 @@
 let $backButton = $("#search-again");
 let $results = document.getElementById("result-section");
-
+let $array = new Array();
 
 //Ajax query; uses queryURL variable
 $("document").ready(function()
@@ -11,29 +11,69 @@ $("document").ready(function()
           method: "GET"
           }).then(function(response)
                   {
-                      let $results = document.getElementById("result-section");
-                      console.log(response);
-                      let foodOrDrink = localStorage.getItem("foodOrDrink");
-                      switch (foodOrDrink)
-                      {
-                           case "food":
-                                results("food");
+                       let $results = document.getElementById("result-section");
+                       let foodOrDrink = localStorage.getItem("foodOrDrink");
+                       switch (foodOrDrink)
+                       {
+                            case "food":
+                                $array = response.meals;
+                                resultsFood();
                                 break;
-                                case "drink":
-                                     results("drink");
-                                     break;
-                                     default:
-                                          console.log(localStorage.getItem("foodOrDrink"));
-                                        }
+                           case "drink":
+                              $array = response.drinks;
+                                resultsDrink();
+                                break;
+                           default:
+                                console.log(localStorage.getItem("foodOrDrink"));
+                      }
                                    });
                                    // location.href = "results.html";
                               }
                          );
                               
-function results(foodOrDrink)
+function resultsDrink()
 {
-     console.log(foodOrDrink);
-     $results.textContent = localStorage.getItem("results");
+     for(let i = 0; i < $array.length; i++)
+     {
+          let searchQuery = $array[i];
+          let $drinkName = $(`<h2 class="drinkName"></h2>`);
+          let $ingredients = $(`<ul class="ingredients"></ul>`);
+          let keys = Object.keys(searchQuery);
+          let steps = new Array();
+          let ingNum = 1;
+          for(let i in keys)
+          {
+               // console.log(keys[i]);
+               if(keys[i].startsWith("strIngredient"))
+               {
+                    let index = keys.indexOf(`strIngredient${ingNum}`)-20;
+                    console.log(index);
+                    steps.push({[searchQuery[`strIngredient${index}`]]:searchQuery[`strMeasure${index}`]});
+                    ingNum++;
+               }
+          }
+          // console.log(steps);
+          for (let i = 0; i < steps.length; i++)
+          {
+               if(!steps[i].hasOwnProperty("null"))
+               {
+                    let $li = $(`<li></li>`);
+                    $li.text(JSON.stringify(steps[i]));
+                    $ingredients.append($li);
+               }
+          }
+          
+          let $result = $(`<div class="searchQuery"></div>`);
+          $drinkName.text(searchQuery.strDrink);
+          $result.append($drinkName);
+          $result.append($ingredients);
+          $("#result-section").append($result);
+     }
+}
+
+function resultsFood()
+{
+
 }
 
 
