@@ -123,10 +123,39 @@ button {
   padding: 25px;
 
 }
-
-
 #result-section {
-  min-height: 2500px;
+  min-height: 100vh;
+}
+
+#results-backbutton {
+  margin: 0 auto 0 auto;
+  text-align: center;
+  border-bottom: solid 2px #000;
+  margin-bottom: 25px;
+}
+
+#results-backbutton a {
+  margin-bottom: 25px;
+}
+
+.result-item {
+  border-bottom: solid 1px #ccc;
+}
+
+#results-page h2 {
+  font-size: 20pt;
+  font-family: 'Staatliches', cursive;
+  margin-bottom: 0;
+}
+
+#result-section img {
+  max-width: 100%;
+}
+
+.readmore {
+  display: block;
+  text-decoration: underline;
+  margin-top: 10px;
 }
 
 
