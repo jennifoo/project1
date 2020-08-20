@@ -23,27 +23,82 @@ h1 {
 }
 
 h3 {
-  font-size: 22pt;
+  font-family: 'Staatliches', cursive;
+  font-size: 24pt;
 }
 
 body { margin: 0; }
 
-/* HOMEPAGE ---------------------------------------- */
-
-#drink-recipe, #food-recipe {
-  background-color: #fff;
-  opacity: .9;
-  padding: 25px;
-  margin-bottom: 15px; */
-  /* height: 100vh; */
+button {
+  font-family: 'Staatliches', cursive;
 }
 
-#background {
+/* HOMEPAGE ---------------------------------------- */
+
+#title, #results-title { text-align: center; }
+
+.recipe-module {
+  background-color: #fff;
+  opacity: .9;
+  padding: 35px;
+  margin: 0 auto 15px auto;
+  /* height: 100vh; */
+  max-width: 400px;
+}
+
+.recipe-module p{
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Background Image */
+#background1::before {
+  position: absolute;
+  content: "";
   background-image: url(images/drink-man.jpg);
   background-repeat: no-repeat;
   background-position: left top;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  transition: background .5s linear;
+  z-index: -5
+}
+
+#background1.change1::before {
+  background-image: url(images/food-man.jpg);
+}
+#background1.change2::before {
+  background-image: url(images/drink-woman.jpg);
+}
+
+/* Background Black Overlay */
+#homepage .container::before{
+  content: "";
+  background-color: #000;
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .5;
+  mix-blend-mode: normal;
+  animation-name: bgmove;
+  animation-delay: 3.5s;
+  animation-duration: .35s;
+  animation-fill-mode: both;
+  z-index: -4;
+}
+
+
+@keyframes bgmove {
+  from { top: -100vh; }
+  to { top: 0; }
+}
+
+#homepage .container {
+  padding-top: 2vh;
 }
 
 /* RESULTS PAGE ---------------------------------------- */
@@ -56,21 +111,75 @@ body { margin: 0; }
   background-repeat: no-repeat;
   background-size: cover;
   /* height: 100vh; */
-  /* position: sticky; */
+  overflow: hidden;
 }
 
 #results-container {
-  min-height: 1000px;
   background-color: #fff;
   max-width: 680px;
   margin-left: auto;
   margin-right: auto;
   opacity: .9;
   padding: 25px;
-  /* overflow: hidden; */
+
+}
+#result-section {
+  min-height: 100vh;
+}
+
+#result-section p {
+margin: 0;
+}
+
+.addResultTitle {
+  margin-top: 25px;
+}
+
+#results-backbutton {
+  margin: 0 auto 0 auto;
+  text-align: center;
+  border-bottom: solid 2px #000;
+  /* margin-bottom: 25px; */
+}
+
+#results-backbutton a {
+  margin-bottom: 25px;
+}
+
+.result-item {
+  border-bottom: solid 1px #ccc;
+}
+
+#results-page h2 {
+  font-size: 20pt;
+  font-family: 'Staatliches', cursive;
+  margin-bottom: 0;
+}
+
+#result-section img {
+  max-width: 100%;
+}
+
+.readmore {
+  display: block;
+  text-decoration: underline;
+  margin-top: 10px;
 }
 
 
-#result-section {
-  min-height: 500px;
+/* MEDIA QUERIES ---------------------------------------- */
+
+
+@media all and (max-width: 780px){
+  #homepage .container {
+    padding-top: 0px;
+  }
+  h1 {
+    font-size: 32pt;
+  }
+  /* Fix odd spacing by framework */
+  #homepage .row .col {
+  float: none;
+  clear: both;
+  }
 }
