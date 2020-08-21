@@ -108,6 +108,9 @@ function displayResults(foodOrDrink)
 
                             // Column that you need to append the description to
                             let $resultItemColDescription = $(`<div class="col m8">`);
+                            $resultItemColDescription.append($(`<h3>Ingredients</h3>`));
+                            $resultItemColDescription.append($ingredients);
+                            $resultItemColDescription.append($(`<h3>Instructions</h3>`));
                             $resultItemColDescription.append($instructions);
 
                             //$result.append($ingredients);

@@ -63,7 +63,8 @@ button {
   width: 100%;
   opacity: 1;
   transition: background .5s linear;
-  z-index: -5
+  z-index: -5;
+  position: fixed;
 }
 
 #background1.change1::before {
@@ -89,6 +90,7 @@ button {
   animation-duration: .35s;
   animation-fill-mode: both;
   z-index: -4;
+  position: fixed;
 }
 
 
@@ -99,6 +101,10 @@ button {
 
 #homepage .container {
   padding-top: 2vh;
+}
+
+ul.ingredients {
+  margin-top: 0;
 }
 
 /* RESULTS PAGE ---------------------------------------- */
@@ -156,6 +162,12 @@ margin: 0;
   margin-bottom: 0;
 }
 
+#results-page h3 {
+  font-size: 12pt;
+  font-family: 'Staatliches', cursive;
+  margin-bottom: 0;
+}
+
 #result-section img {
   max-width: 100%;
 }
@@ -170,12 +182,20 @@ margin: 0;
 /* MEDIA QUERIES ---------------------------------------- */
 
 
-@media all and (max-width: 780px){
+@media all and (max-width: 1280px){
   #homepage .container {
     padding-top: 0px;
   }
-  h1 {
-    font-size: 32pt;
+  h1 { font-size: 25pt; margin: 25px 0 0 0; }
+  h3 { font-size: 16pt; }
+  .recipe-module {
+    padding: 25px;
+}
+}
+
+@media all and (max-width: 780px){
+  #homepage .container {
+    padding-top: 0px;
   }
   /* Fix odd spacing by framework */
   #homepage .row .col {
